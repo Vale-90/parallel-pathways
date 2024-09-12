@@ -1,10 +1,9 @@
 %% Copy the time-series extracted with FSL into an SPM structure %%
 
-% IMPORTANT: first you need to load a dummy VOI structure %%
+% IMPORTANT: first you need to load a dummy VOI structure previously created via the DCM GUI %%
 
 
-subjects = {'P05', 'P08', 'P09', 'P10', 'P14', 'P15', 'P17', 'P19', 'P01', 'P03', 'P04', 'P06', 'P12', 'P13', 'P16', 'P18', 'P20', 'P22'};
-
+subject_names = { 'P05', 'P01', 'P10', 'P19', 'P16', 'P08', 'P09',  'P14', 'P15', 'P17', 'P03', 'P04', 'P06', 'P12', 'P13', 'P18', 'P20', 'P22', '002', '004', '005', '007', '008', '009', '012', '013', '015', '016', '017', '018', '019', '021', '022', '024', '025', '026', '027', 'FM21', 'FM22', 'FM23', 'FM24', 'FM25', 'FM26', 'FM27', 'FM28', 'FM29', 'FM30', 'FM31', 'FM32', 'FM33', 'FM34', 'FM35', 'FM36', 'FM37', 'FM38', 'FM39', 'FM40'};
 
 for s = 1:length(subjects) 
     subject = subjects{s};
@@ -13,11 +12,11 @@ for s = 1:length(subjects)
     cd (subject);
     cd time_series;    
     
-     LCload = ['/home/vo16427/Data_LH/', subject, '/fsl5_LC_MED_right_zstat9_all_nostc.txt'];    
+     LCload = ['/home/vo16427/Data_LH/', subject, '/LC_MED_right_zstat9_all_nostc.txt'];    
    
-     RVMload = ['/home/vo16427/Data_LH/', subject, '/fsl5_RVM_MET_zstat8_all_nostc.txt']; 
-     PAGload = ['/home/vo16427/Data_LH/', subject, '/fsl5_PAG_MED_zstat9_all_nostc.txt'];
-     ACCload = ['/home/vo16427/Data_LH/', subject, '/fsl5_ACC_MED_zstat9_all_nostc.txt'];
+     RVMload = ['/home/vo16427/Data_LH/', subject, '/RVM_MET_zstat8_all_nostc.txt']; 
+     PAGload = ['/home/vo16427/Data_LH/', subject, '/PAG_MED_zstat9_all_nostc.txt'];
+     ACCload = ['/home/vo16427/Data_LH/', subject, '/ACC_MED_zstat9_all_nostc.txt'];
      
      RVM = load(RVMload);
      Y = RVM(:, 1);
@@ -29,8 +28,7 @@ for s = 1:length(subjects)
      Y = PAG(:, 1);
      xY.u = PAG(:, 1);
      xY.name = 'MED_PAG';
-     save('VOI_MED_PAG_1', 'xY', 'Y');
-% %     
+     save('VOI_MED_PAG_1', 'xY', 'Y');   
      
      ACC = load(ACCload);
      Y = ACC(:, 1);
@@ -43,5 +41,5 @@ for s = 1:length(subjects)
      xY.u = LC(:, 1);
      xY.name = 'rLC';
      save('VOI_MED_rLC_1', 'xY', 'Y') ; 
-%     
+   
 end
