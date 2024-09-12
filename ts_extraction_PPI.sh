@@ -1,8 +1,11 @@
 #!/bin/bash
-echo -n "Region? Input name of mask"
+
+# Extract the time series from the peak activation voxel in a specific mask
+
+echo -n "Region? Input name of mask >"
 read region
 
-echo -n "Which zstat? Input number: 8 is main effect of distraction, 9 is main effect of temperature "
+echo -n "Which zstat? Input number: 8 is main effect of distraction, 9 is main effect of temperature >"
 read contrast
 
 
